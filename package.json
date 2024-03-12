@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/lato": "^5.0.19",
     "@stylexjs/stylex": "^0.5.1",
     "framer-motion": "^11.0.8",
     "react": "^18.2.0",
