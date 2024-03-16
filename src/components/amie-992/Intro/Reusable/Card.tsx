@@ -1,18 +1,17 @@
-import { MotionValue, useTransform } from "framer-motion";
-import { FC, PropsWithChildren } from "react";
-import { motion } from "framer-motion";
 import clsx from "clsx";
+import { motion, useTransform } from "framer-motion";
+import { FC, PropsWithChildren } from "react";
+import { useScrollContext } from "../helpers/ScrollContext";
 
 type Props = {
   index: number;
-  scrollYProgress: MotionValue;
 };
 
 const Card: FC<PropsWithChildren<Props>> = ({
   index,
   children,
-  scrollYProgress,
 }) => {
+  const scrollYProgress = useScrollContext();
   const rotateX = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.6],
@@ -50,16 +49,16 @@ const Card: FC<PropsWithChildren<Props>> = ({
   );
   const opacity = useTransform(
     scrollYProgress,
-    index == 4 ? [0.5, 1] : [0, 0.25],
-    index == 4 ? [0, 1] : [0.5, 1]
+    index === 4 ? [0.5, 1] : [0, 1],
+    index === 4 ? [0, 1] : [1, 1]
   );
 
   return (
     <motion.div
       className={clsx(
-        "flex justify-center items-center grid-stack overflow-hidden",
-        "rounded-lg aspect-[16/10]",
-        index !== 5 && "bg-gray-600/15 backdrop-blur-xl"
+        "flex justify-center items-center grid-stack",
+        "rounded-lg aspect-[16/10] h-[50vh]",
+        index === 3 && "bg-gray-600/15 backdrop-blur-xl"
       )}
       style={{
         x,

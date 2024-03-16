@@ -1,4 +1,4 @@
-import Entry from "./components/amie-992/Index";
+import Entry from "./components/amie-992/Entry";
 
 function App() {
   return <Entry />;
